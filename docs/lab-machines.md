@@ -5,7 +5,7 @@ All machines are on the isolated VMware network `vmnet2` (Host-only), subnet `10
 | Name  | Role                                     | OS                  | IP            |
 |-------|------------------------------------------|---------------------|---------------|
 | DC01  | Domain controller (AD DS, DNS)           | Windows Server 2022 | `10.10.10.10` |
-| WS01  | Domain-joined workstation                | Windows 11          | `10.10.10.20` |
+| WS01  | Domain-joined workstation                | Windows 10          | `10.10.10.20` |
 | LNX01 | Linux server, log source                 | Ubuntu Server 24.04 | `10.10.10.30` |
 | WAZUH | SIEM (Wazuh manager, indexer, dashboard) | Ubuntu Server 24.04 | `10.10.10.40` |
 | SOAR  | Alert automation and enrichment          | Ubuntu Server 24.04 | `10.10.10.50` |
