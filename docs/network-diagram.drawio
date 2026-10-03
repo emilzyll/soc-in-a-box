@@ -1,0 +1,76 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="soc-lab-net" name="SOC lab network">
+    <mxGraphModel dx="1000" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="920" pageHeight="620" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="net" value="vmnet2 · Host-only · 10.10.10.0/24 (isolated network)" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=#f5f7fb;strokeColor=#6c8ebf;verticalAlign=top;fontStyle=1;fontSize=13;arcSize=3;" vertex="1" parent="1">
+          <mxGeometry x="200" y="140" width="690" height="440" as="geometry" />
+        </mxCell>
+
+        <mxCell id="inet" value="&lt;b&gt;External services&lt;/b&gt;&lt;br&gt;VirusTotal · AbuseIPDB · Jira · Telegram" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="560" y="10" width="320" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="host" value="&lt;b&gt;Host&lt;/b&gt;&lt;br&gt;Linux Mint + VMware&lt;br&gt;10.10.10.1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="20" y="300" width="150" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="wazuh" value="&lt;b&gt;WAZUH&lt;/b&gt;&lt;br&gt;SIEM&lt;br&gt;10.10.10.40" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="300" y="200" width="170" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="soar" value="&lt;b&gt;SOAR&lt;/b&gt;&lt;br&gt;Automation&lt;br&gt;10.10.10.50" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="640" y="200" width="170" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="switch" value="vmnet2 (virtual switch)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4d4d4d;strokeColor=#333333;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="230" y="335" width="630" height="24" as="geometry" />
+        </mxCell>
+
+        <mxCell id="dc01" value="&lt;b&gt;DC01&lt;/b&gt;&lt;br&gt;AD DS + DNS&lt;br&gt;10.10.10.10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="240" y="440" width="170" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ws01" value="&lt;b&gt;WS01&lt;/b&gt;&lt;br&gt;Windows 11&lt;br&gt;10.10.10.20" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="460" y="440" width="170" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="lnx01" value="&lt;b&gt;LNX01&lt;/b&gt;&lt;br&gt;Ubuntu Server&lt;br&gt;10.10.10.30" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="680" y="440" width="170" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e1" style="endArrow=none;html=1;strokeWidth=2;" edge="1" parent="1" source="dc01" target="switch">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="endArrow=none;html=1;strokeWidth=2;" edge="1" parent="1" source="ws01" target="switch">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="endArrow=none;html=1;strokeWidth=2;" edge="1" parent="1" source="lnx01" target="switch">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="endArrow=none;html=1;strokeWidth=2;" edge="1" parent="1" source="wazuh" target="switch">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" style="endArrow=none;html=1;strokeWidth=2;" edge="1" parent="1" source="soar" target="switch">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" style="endArrow=none;html=1;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="host" target="switch">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="f1" value="alerts (webhook)" style="endArrow=block;html=1;strokeColor=#6c8ebf;fontSize=11;" edge="1" parent="1" source="wazuh" target="soar">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f2" value="NAT (temporary): enrichment, tickets, notifications" style="endArrow=block;html=1;dashed=1;strokeColor=#d6b656;fontSize=11;" edge="1" parent="1" source="soar" target="inet">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend" value="Wazuh agents on DC01, WS01, LNX01 → WAZUH (1514/1515 TCP)&lt;br&gt;DNS and soc.lab domain → DC01" style="text;html=1;align=left;fontSize=11;fontColor=#555555;" vertex="1" parent="1">
+          <mxGeometry x="240" y="525" width="620" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
