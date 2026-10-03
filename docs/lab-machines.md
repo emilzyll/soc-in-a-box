@@ -17,7 +17,7 @@ All machines are on the isolated VMware network `vmnet2` (Host-only), subnet `10
 - Mask: `255.255.255.0`
 - Gateway: none (isolated network)
 - DNS for all machines: `10.10.10.10` (DC01)
-- Domain: `soc.lab`
+- Domain: `lab.local`
 
 ## Data flows
 
