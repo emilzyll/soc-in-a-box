@@ -1,0 +1,13 @@
+## SOC lab audit rules
+
+## User accounts and passwords
+-w /etc/passwd -p wa -k passwd_changes
+-w /etc/shadow -p wa -k shadow_changes
+
+## Privilege configuration
+-w /etc/sudoers -p wa -k sudoers_changes
+-w /etc/sudoers.d/ -p wa -k sudoers_changes
+
+## Privilege use
+-w /usr/bin/sudo -p x -k sudo_exec
+-a always,exit -F arch=b64 -S execve -F euid=0 -F auid>=1000 -F auid!=unset -k root_cmd
