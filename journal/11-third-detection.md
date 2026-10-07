@@ -1,0 +1,2 @@
+#11 — Third detection T1059.001 PowerShell — 2026-10-07
+Done: ran manual -EncodedCommand equivalent on WS01 (Atomic test 15 needs the AtomicTestHarnesses module from the internet); default Wazuh rules for Sysmon ID 1: 92057 (level 12, base64 command), 92027 (level 4), 67027 (level 3), 92213 (level 15, executable dropped); wrote custom rule 100130 (level 12, child of 92057, MITRE T1059.001); alert fired; coverage-plan status detected
