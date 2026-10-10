@@ -1,0 +1,3 @@
+# 14 — Evasion detections: log clear + Defender disable — 2026-10-11
+Done: cleared Security event log via wevtutil cl on WS01; default rule 63103 "The audit log was cleared" (level 5); wrote custom rule 100109 (child of 63103, level 12, MITRE T1070.001); disabled Defender real-time protection via Set-MpPreference; added missing localfile for Microsoft-Windows-Windows Defender/Operational channel to ossec.conf (was not configured); default rule 62152 "Antivirus real-time protection is disabled" (level 5); wrote custom rule 100111 (child of 62152, level 12, MITRE T1562.001); both alerts confirmed; Defender re-enabled; coverage-plan updated to detected
+
